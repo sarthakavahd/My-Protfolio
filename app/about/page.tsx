@@ -5,10 +5,10 @@ import { Terminal, Database, Code2, Globe, Cpu, ShieldAlert, Wrench, GraduationC
 
 const getCategoryIcon = (category: string) => {
   const cat = category.toLowerCase();
-  if (cat.includes("language")) return <Code2 size={24} className="text-gold transition-colors group-hover:text-cyan" />;
+  if (cat.includes("language")) return <Image src="https://cdn-icons-png.flaticon.com/128/10817/10817310.png" alt="Languages" width={56} height={56} unoptimized className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110" />;
   if (cat.includes("frontend")) return <Image src="https://img.icons8.com/?size=160&id=dhecLjnptiQg&format=png" alt="Frontend" width={56} height={56} unoptimized className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110" />;
   if (cat.includes("backend")) return <Image src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQi9XLPY5wwlPWsNSwO7CsEu9pt_6fcCKXxD2L4Z0LBQ&s=10" alt="Backend" width={56} height={56} unoptimized className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110" />;
-  if (cat.includes("database")) return <Database size={24} className="text-gold transition-colors group-hover:text-cyan" />;
+  if (cat.includes("database")) return <Image src="https://cdn-icons-png.flaticon.com/128/9672/9672242.png" alt="Database" width={56} height={56} unoptimized className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110" />;
   if (cat.includes("ai")) return <Cpu size={24} className="text-cyan transition-colors group-hover:text-gold" />;
   if (cat.includes("blockchain")) return <ShieldAlert size={24} className="text-gold transition-colors group-hover:text-cyan" />;
   return <Wrench size={24} className="text-muted transition-colors group-hover:text-cyan" />;
@@ -92,7 +92,7 @@ export default function AboutPage() {
               
               <div className="mb-6 flex flex-col gap-5 relative z-10">
                 <div className={`flex h-14 w-14 items-center justify-center rounded-2xl bg-white/5 shadow-inner transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 overflow-hidden ${
-                  category.toLowerCase().includes('frontend') 
+                  ['language', 'frontend', 'backend', 'database'].some(c => category.toLowerCase().includes(c))
                     ? 'group-hover:bg-cyan/10' 
                     : 'border border-white/10 group-hover:bg-cyan/10 group-hover:border-cyan/30'
                 }`}>
