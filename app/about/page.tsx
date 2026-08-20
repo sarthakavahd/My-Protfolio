@@ -7,7 +7,7 @@ const getCategoryIcon = (category: string) => {
   const cat = category.toLowerCase();
   if (cat.includes("language")) return <Code2 size={24} className="text-gold transition-colors group-hover:text-cyan" />;
   if (cat.includes("frontend")) return <Globe size={24} className="text-cyan transition-colors group-hover:text-gold" />;
-  if (cat.includes("backend")) return <Terminal size={24} className="text-cyan transition-colors group-hover:text-gold" />;
+  if (cat.includes("backend")) return <Image src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQi9XLPY5wwlPWsNSwO7CsEu9pt_6fcCKXxD2L4Z0LBQ&s=10" alt="Backend" width={26} height={26} unoptimized className="object-contain transition-transform duration-500 group-hover:scale-110" />;
   if (cat.includes("database")) return <Database size={24} className="text-gold transition-colors group-hover:text-cyan" />;
   if (cat.includes("ai")) return <Cpu size={24} className="text-cyan transition-colors group-hover:text-gold" />;
   if (cat.includes("blockchain")) return <ShieldAlert size={24} className="text-gold transition-colors group-hover:text-cyan" />;
