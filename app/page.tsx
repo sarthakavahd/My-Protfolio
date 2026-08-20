@@ -4,18 +4,19 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowDownRight, Rocket } from "lucide-react";
 import Link from "next/link";
 
-function MagneticButton({ href, children, className }: { href: string; children: React.ReactNode; className: string }) {
+function MagneticButton({ href, children, className = "", download }: { href: string; children: React.ReactNode; className?: string, download?: boolean | string }) {
   const ref = useRef<HTMLAnchorElement>(null);
   const [ripples, setRipples] = useState<{ x: number; y: number; id: number }[]>([]);
 
   const handleMouseMove = (e: React.MouseEvent) => {
     const el = ref.current;
-    if (!el) return;
-    const rect = el.getBoundingClientRect();
-    const x = e.clientX - rect.left - rect.width / 2;
-    const y = e.clientY - rect.top - rect.height / 2;
-    el.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
-    el.style.transition = "transform 0.1s ease";
+    if (el) {
+      const rect = el.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      el.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+      el.style.transition = "transform 0.1s linear";
+    }
   };
 
   const handleMouseLeave = () => {
@@ -37,9 +38,36 @@ function MagneticButton({ href, children, className }: { href: string; children:
     setTimeout(() => setRipples((r) => r.filter((rp) => rp.id !== id)), 700);
   };
 
+  const isExternal = download !== undefined || href.startsWith("http");
+
+  if (isExternal) {
+    return (
+      <a
+        ref={ref}
+        href={href}
+        className={`relative overflow-hidden ${className}`}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        onClick={handleClick}
+        download={download}
+        target={download ? undefined : "_blank"}
+        rel={download ? undefined : "noopener noreferrer"}
+      >
+        {ripples.map((rp) => (
+          <span
+            key={rp.id}
+            className="absolute rounded-full bg-white/20 pointer-events-none"
+            style={{ left: rp.x - 5, top: rp.y - 5, width: 10, height: 10, animation: "ripple-expand 0.6s ease-out forwards" }}
+          />
+        ))}
+        {children}
+      </a>
+    );
+  }
+
   return (
     <Link
-      ref={ref}
+      ref={ref as any}
       href={href}
       className={`relative overflow-hidden ${className}`}
       onMouseMove={handleMouseMove}
@@ -254,6 +282,13 @@ export default function Home() {
           >
             View all work
             <ArrowDownRight size={16} className="transition-transform group-hover:translate-x-0.5 group-hover:translate-y-0.5" />
+          </MagneticButton>
+          <MagneticButton
+            href="/resume.pdf"
+            download={true}
+            className="focus-ring rounded font-mono text-xs font-semibold uppercase tracking-widest text-gold transition-colors hover:text-cyan hover:scale-105"
+          >
+            Download Resume
           </MagneticButton>
           <MagneticButton
             href="/about"
