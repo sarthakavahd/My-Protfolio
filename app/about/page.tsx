@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { education, skills } from "@/data/projects";
 import ScrollReveal from "@/components/ScrollReveal";
 import { Terminal, Database, Code2, Globe, Cpu, ShieldAlert, Wrench, GraduationCap, Building2 } from "lucide-react";
@@ -17,26 +18,41 @@ export default function AboutPage() {
   return (
     <main className="mx-auto max-w-5xl px-6 py-24">
       <ScrollReveal>
-        <div className="mb-8 inline-flex items-center gap-3 rounded-full border border-gold/30 bg-gold/5 px-4 py-2 font-mono text-[10px] sm:text-xs uppercase tracking-widest text-gold shadow-[0_0_20px_rgba(201,162,39,0.1)] backdrop-blur-sm">
-          <span className="relative flex h-1.5 w-1.5 sm:h-2 sm:w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-1.5 w-1.5 sm:h-2 sm:w-2 bg-gold"></span>
-          </span>
-          <span>About Me</span>
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_240px] gap-10 items-start mb-16">
+          <div>
+            <div className="mb-8 inline-flex items-center gap-3 rounded-full border border-gold/30 bg-gold/5 px-4 py-2 font-mono text-[10px] sm:text-xs uppercase tracking-widest text-gold shadow-[0_0_20px_rgba(201,162,39,0.1)] backdrop-blur-sm">
+              <span className="relative flex h-1.5 w-1.5 sm:h-2 sm:w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-1.5 w-1.5 sm:h-2 sm:w-2 bg-gold"></span>
+              </span>
+              <span>About Me</span>
+            </div>
+            <h1 className="mb-6 max-w-2xl font-display text-4xl font-medium text-ink sm:text-5xl">
+              Full-stack engineer building scalable web apps with a touch of Web3.
+            </h1>
+            <p className="mb-4 max-w-xl text-sm leading-relaxed text-muted">
+              My primary focus is engineering production-grade web applications. I spend most of my time
+              architecting Node &amp; FastAPI backends, designing robust PostgreSQL schemas, and crafting
+              interactive React frontends deployed via Vercel and Docker.
+            </p>
+            <p className="max-w-xl text-sm leading-relaxed text-muted">
+              While my core lies in traditional full-stack development, I also hold a strong interest in the decentralized web — leveraging my M.Sc. in Blockchain Technology to integrate smart contracts and privacy protocols when a project demands it.
+            </p>
+          </div>
+          
+          <div className="relative aspect-square w-48 md:w-full overflow-hidden rounded-2xl border border-white/10 shadow-[0_0_30px_rgba(79,209,197,0.15)] group mt-4 md:mt-16">
+            <Image 
+              src="/profile.jpg" 
+              alt="Sarthak Avhad" 
+              fill
+              className="object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-tr from-cyan/20 to-transparent mix-blend-overlay pointer-events-none transition-opacity duration-700 group-hover:opacity-0" />
+          </div>
         </div>
-        <h1 className="mb-6 max-w-2xl font-display text-4xl font-medium text-ink sm:text-5xl">
-          Full-stack engineer building scalable web apps with a touch of Web3.
-        </h1>
-        <p className="mb-4 max-w-xl text-sm leading-relaxed text-muted">
-          My primary focus is engineering production-grade web applications. I spend most of my time
-          architecting Node &amp; FastAPI backends, designing robust PostgreSQL schemas, and crafting
-          interactive React frontends deployed via Vercel and Docker.
-        </p>
-        <p className="mb-6 max-w-xl text-sm leading-relaxed text-muted">
-          While my core lies in traditional full-stack development, I also hold a strong interest in the decentralized web — leveraging my M.Sc. in Blockchain Technology to integrate smart contracts and privacy protocols when a project demands it.
-        </p>
+
         {/* Separator */}
-        <div className="mb-16 border-b border-white/10" />
+        <div className="mb-16 border-b border-border" />
       </ScrollReveal>
 
       <ScrollReveal>
