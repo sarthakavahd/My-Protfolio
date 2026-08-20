@@ -9,7 +9,7 @@ const getCategoryIcon = (category: string) => {
   if (cat.includes("frontend")) return <Image src="https://img.icons8.com/?size=160&id=dhecLjnptiQg&format=png" alt="Frontend" width={56} height={56} unoptimized className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110" />;
   if (cat.includes("backend")) return <Image src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQi9XLPY5wwlPWsNSwO7CsEu9pt_6fcCKXxD2L4Z0LBQ&s=10" alt="Backend" width={56} height={56} unoptimized className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110" />;
   if (cat.includes("database")) return <Image src="https://cdn-icons-png.flaticon.com/128/9672/9672242.png" alt="Database" width={56} height={56} unoptimized className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110" />;
-  if (cat.includes("blockchain")) return <Image src="https://cdn-icons-png.flaticon.com/128/4123/4123839.png" alt="Blockchain & Cryptography" width={56} height={56} unoptimized className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110" />;
+  if (cat.includes("blockchain")) return <Image src="https://cdn-icons-png.flaticon.com/128/10439/10439415.png" alt="Blockchain & Cryptography" width={56} height={56} unoptimized className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110" />;
   if (cat.includes("ai &")) return <Image src="https://cdn-icons-png.flaticon.com/128/5278/5278402.png" alt="AI & Agents" width={56} height={56} unoptimized className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110" />;
   return <Wrench size={24} className="text-muted transition-colors group-hover:text-cyan" />;
 };
