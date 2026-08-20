@@ -1,26 +1,43 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-bg:      #000000;
+  --color-surface: #0a0a0a;
+  --color-border:  #222222;
+  --color-ink:     #e8e6e1;
+  --color-muted:   #888888;
+  --color-gold:    #c9a227;
+  --color-cyan:    #4fd1c5;
+  --font-display: var(--font-display);
+  --font-body:    var(--font-body);
+  --font-mono:    var(--font-mono);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-body), sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background-image: radial-gradient(circle at 1px 1px, #ffffff08 1px, transparent 0);
+    background-size: 28px 28px;
+  }
+  ::selection { background: #c9a22733; color: var(--color-ink); }
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--color-bg); }
+  ::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 9999px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--color-gold); }
+  @media (pointer: fine) { *, html, body, a, button { cursor: none !important; } }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  .focus-ring:focus-visible { outline: 2px solid var(--color-cyan); outline-offset: 3px; }
+  .font-display { font-family: var(--font-display), sans-serif; }
+  .font-mono    { font-family: var(--font-mono), monospace; }
 }
