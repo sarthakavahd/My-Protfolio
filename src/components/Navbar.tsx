@@ -70,7 +70,7 @@ export default function Navbar() {
       transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] as const }}
       className="fixed left-0 right-0 top-6 z-50 mx-auto max-w-3xl px-4 md:px-6"
     >
-      <div className={`relative border border-white/10 bg-black/40 backdrop-blur-md shadow-[0_8px_32px_rgba(0,0,0,0.5)] overflow-hidden group transition-all duration-300 ${open ? 'rounded-3xl' : 'rounded-full'}`}>
+      <div className={`relative border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.5)] overflow-hidden group transition-all duration-300 ${open ? 'rounded-3xl bg-black/85 backdrop-blur-2xl' : 'rounded-full bg-black/40 backdrop-blur-md'}`}>
         {/* Animated glow sweep on hover */}
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-cyan/5 to-transparent -translate-x-full group-hover:translate-x-full transition-all duration-1000 ease-in-out pointer-events-none" />
 
