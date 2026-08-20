@@ -1,8 +1,68 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowDownRight, Rocket } from "lucide-react";
 import Link from "next/link";
+
+function MagneticButton({ href, children, className }: { href: string; children: React.ReactNode; className: string }) {
+  const ref = useRef<HTMLAnchorElement>(null);
+  const [ripples, setRipples] = useState<{ x: number; y: number; id: number }[]>([]);
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    const el = ref.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    el.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+    el.style.transition = "transform 0.1s ease";
+  };
+
+  const handleMouseLeave = () => {
+    const el = ref.current;
+    if (el) {
+      el.style.transform = "translate(0, 0)";
+      el.style.transition = "transform 0.5s cubic-bezier(0.22,1,0.36,1)";
+    }
+  };
+
+  const handleClick = (e: React.MouseEvent) => {
+    const el = ref.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const id = Date.now();
+    setRipples((r) => [...r, { x, y, id }]);
+    setTimeout(() => setRipples((r) => r.filter((rp) => rp.id !== id)), 700);
+  };
+
+  return (
+    <Link
+      ref={ref}
+      href={href}
+      className={`relative overflow-hidden ${className}`}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      onClick={handleClick}
+    >
+      {ripples.map((rp) => (
+        <span
+          key={rp.id}
+          className="absolute rounded-full bg-white/20 pointer-events-none"
+          style={{
+            left: rp.x - 5,
+            top: rp.y - 5,
+            width: 10,
+            height: 10,
+            animation: "ripple-expand 0.6s ease-out forwards",
+          }}
+        />
+      ))}
+      {children}
+    </Link>
+  );
+}
 
 const roles = [
   "scalable backend systems",
@@ -36,7 +96,10 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="mx-auto flex max-w-5xl flex-col justify-center px-6 py-28 md:min-h-[85vh] md:py-32">
+    <main className="relative mx-auto flex max-w-5xl flex-col justify-center px-6 py-28 md:min-h-[85vh] md:py-32">
+      {/* Ambient glow orbs */}
+      <div className="pointer-events-none absolute -top-32 -left-32 h-64 w-64 rounded-full bg-gold/5 blur-[80px]" />
+      <div className="pointer-events-none absolute bottom-0 -right-20 h-80 w-80 rounded-full bg-cyan/5 blur-[100px]" />
       {/* Intro label — slides in from left */}
       <motion.div
         initial={{ opacity: 0, x: -60, filter: "blur(6px)" }}
@@ -185,19 +248,19 @@ export default function Home() {
           }}
           className="flex flex-wrap items-center gap-6"
         >
-          <Link
+          <MagneticButton
             href="/projects"
-            className="focus-ring group inline-flex items-center gap-2 rounded-full border border-cyan/40 bg-cyan/10 px-6 py-3 font-mono text-xs font-semibold uppercase tracking-widest text-cyan transition-all hover:bg-cyan/20 hover:shadow-[0_0_20px_rgba(79,209,197,0.2)]"
+            className="focus-ring group inline-flex items-center gap-2 rounded-full border border-cyan/40 bg-cyan/10 px-6 py-3 font-mono text-xs font-semibold uppercase tracking-widest text-cyan transition-all hover:bg-cyan/20 hover:shadow-[0_0_30px_rgba(79,209,197,0.35)] hover:scale-105"
           >
             View all work
             <ArrowDownRight size={16} className="transition-transform group-hover:translate-x-0.5 group-hover:translate-y-0.5" />
-          </Link>
-          <Link
+          </MagneticButton>
+          <MagneticButton
             href="/about"
-            className="focus-ring rounded font-mono text-xs font-semibold uppercase tracking-widest text-muted transition-colors hover:text-ink"
+            className="focus-ring rounded font-mono text-xs font-semibold uppercase tracking-widest text-muted transition-colors hover:text-ink hover:scale-105"
           >
             More about me
-          </Link>
+          </MagneticButton>
         </motion.div>
       </motion.div>
     </main>
