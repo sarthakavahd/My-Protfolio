@@ -25,7 +25,7 @@ export const projects: Project[] = [
     hash: "linkstore-03",
     block: 3,
     date: "Jan 2026",
-    status: "SHIPPED",
+    status: "DEPLOYED",
     title: "LinkStore",
     link: "https://github.com/sarthakavahd/storing-link",
     summary:
@@ -41,7 +41,7 @@ export const projects: Project[] = [
     hash: "stealthpay-02",
     block: 2,
     date: "Mar 2026",
-    status: "SHIPPED",
+    status: "DEPLOYED",
     title: "StealthPay",
     link: "https://stealth-address-payment-system-web-weld.vercel.app/",
     summary:
