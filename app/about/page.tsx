@@ -91,7 +91,11 @@ export default function AboutPage() {
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-[150%] skew-x-[-45deg] transition-all duration-700 group-hover:translate-x-[150%]" />
               
               <div className="mb-6 flex flex-col gap-5 relative z-10">
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-white/5 shadow-inner border border-white/10 group-hover:bg-cyan/10 group-hover:border-cyan/30 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 overflow-hidden">
+                <div className={`flex h-14 w-14 items-center justify-center rounded-2xl bg-white/5 shadow-inner transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 overflow-hidden ${
+                  category.toLowerCase().includes('frontend') 
+                    ? 'group-hover:bg-cyan/10' 
+                    : 'border border-white/10 group-hover:bg-cyan/10 group-hover:border-cyan/30'
+                }`}>
                   {getCategoryIcon(category)}
                 </div>
                 <h3 className="font-display text-2xl font-bold tracking-tight text-ink transition-colors duration-300 group-hover:text-cyan">
