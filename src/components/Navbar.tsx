@@ -126,9 +126,10 @@ export default function Navbar() {
               animate={{ height: "auto", opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
               transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] as const }}
-              className="overflow-hidden md:hidden"
+              style={{ overflow: "hidden" }}
+              className="md:hidden"
             >
-              <ul className="flex flex-col gap-4 border-t border-white/10 px-6 py-5 font-mono text-xs uppercase tracking-widest">
+              <ul className="flex flex-col gap-5 border-t border-white/10 px-6 pt-5 pb-7 font-mono text-xs uppercase tracking-widest">
                 {links.map((l, i) => (
                   <motion.li
                     key={l.href}
