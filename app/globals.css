@@ -29,7 +29,7 @@
   ::-webkit-scrollbar-track { background: var(--color-bg); }
   ::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 9999px; }
   ::-webkit-scrollbar-thumb:hover { background: var(--color-gold); }
-  @media (pointer: fine) { *, html, body, a, button { cursor: none !important; } }
+
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
