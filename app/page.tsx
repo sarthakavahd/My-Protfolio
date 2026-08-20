@@ -15,7 +15,7 @@ const wordVariants = {
   hidden: { opacity: 0, y: 40, rotateX: 90, filter: "blur(10px)" },
   visible: { 
     opacity: 1, y: 0, rotateX: 0, filter: "blur(0px)",
-    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } 
+    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] as const } 
   }
 };
 
@@ -23,7 +23,7 @@ const blurRevealVariants = {
   hidden: { opacity: 0, scale: 0.9, filter: "blur(12px)" },
   visible: { 
     opacity: 1, scale: 1, filter: "blur(0px)",
-    transition: { duration: 0.9, ease: [0.22, 1, 0.36, 1] } 
+    transition: { duration: 0.9, ease: [0.22, 1, 0.36, 1] as const } 
   }
 };
 
@@ -41,7 +41,7 @@ export default function Home() {
       <motion.div
         initial={{ opacity: 0, x: -60, filter: "blur(6px)" }}
         animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
-        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] as const }}
         className="mb-8 inline-flex items-center gap-3 rounded-full border border-gold/30 bg-gold/5 px-4 py-2 font-mono text-[10px] sm:text-xs uppercase tracking-widest text-gold shadow-[0_0_20px_rgba(201,162,39,0.1)] backdrop-blur-sm"
       >
         <span className="relative flex h-1.5 w-1.5 sm:h-2 sm:w-2">
@@ -152,7 +152,7 @@ export default function Home() {
       <motion.p
         initial={{ opacity: 0, y: 30, filter: "blur(6px)" }}
         animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-        transition={{ duration: 0.7, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.7, delay: 0.8, ease: [0.22, 1, 0.36, 1] as const }}
         className="mt-8 max-w-2xl text-base leading-relaxed text-muted sm:text-lg"
       >
         Bridging the gap between robust web infrastructure and decentralized networks. I specialize in architecting high-performance backend systems, intuitive React frontends, and secure smart contracts.
@@ -162,7 +162,7 @@ export default function Home() {
       <motion.div
         initial={{ scaleX: 0 }}
         animate={{ scaleX: 1 }}
-        transition={{ duration: 0.8, delay: 0.9, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.8, delay: 0.9, ease: [0.22, 1, 0.36, 1] as const }}
         className="mt-10 border-b border-white/10"
         style={{ transformOrigin: "left" }}
       />
@@ -181,7 +181,7 @@ export default function Home() {
         <motion.div
           variants={{
             hidden: { opacity: 0, x: -50, filter: "blur(8px)" },
-            visible: { opacity: 1, x: 0, filter: "blur(0px)", transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } }
+            visible: { opacity: 1, x: 0, filter: "blur(0px)", transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] as const } }
           }}
           className="flex flex-wrap items-center gap-6"
         >

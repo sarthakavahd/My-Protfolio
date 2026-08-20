@@ -13,7 +13,7 @@ const cardVariants = {
   hidden: { opacity: 0, y: 80, scale: 0.9, filter: "blur(8px)" },
   visible: (i: number) => ({
     opacity: 1, y: 0, scale: 1, filter: "blur(0px)",
-    transition: { duration: 0.8, delay: i * 0.15, ease: [0.22, 1, 0.36, 1] }
+    transition: { duration: 0.8, delay: i * 0.15, ease: [0.22, 1, 0.36, 1] as const }
   })
 };
 
@@ -24,7 +24,7 @@ export default function ProjectsPage() {
         <motion.h1
           initial={{ opacity: 0, x: -40, filter: "blur(6px)" }}
           animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] as const }}
           className="font-display text-3xl font-medium text-ink"
         >
           Projects
@@ -42,7 +42,7 @@ export default function ProjectsPage() {
       <motion.div
         initial={{ scaleX: 0 }}
         animate={{ scaleX: 1 }}
-        transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] as const }}
         className="mb-14 border-b border-border"
         style={{ transformOrigin: "left" }}
       />

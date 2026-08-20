@@ -8,7 +8,7 @@ export default function ScrollReveal({ children, delay = 0, className = "" }: { 
       initial={{ opacity: 0, y: 60, scale: 0.92, filter: "blur(8px)" }}
       whileInView={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
       viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.8, delay, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.8, delay, ease: [0.22, 1, 0.36, 1] as const }}
       className={className}
     >
       {children}

@@ -32,7 +32,7 @@ const contactCardVariants = {
   hidden: { opacity: 0, x: 60, scale: 0.9, filter: "blur(6px)" },
   visible: (i: number) => ({
     opacity: 1, x: 0, scale: 1, filter: "blur(0px)",
-    transition: { duration: 0.7, delay: 0.4 + i * 0.12, ease: [0.22, 1, 0.36, 1] }
+    transition: { duration: 0.7, delay: 0.4 + i * 0.12, ease: [0.22, 1, 0.36, 1] as const }
   })
 };
 
@@ -52,7 +52,7 @@ export default function ContactPage() {
       <motion.div
         initial={{ opacity: 0, x: -50, filter: "blur(6px)" }}
         animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
-        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] as const }}
         className="mb-8 inline-flex items-center gap-3 rounded-full border border-gold/30 bg-gold/5 px-4 py-2 font-mono text-[10px] sm:text-xs uppercase tracking-widest text-gold shadow-[0_0_20px_rgba(201,162,39,0.1)] backdrop-blur-sm"
       >
         <span className="relative flex h-1.5 w-1.5 sm:h-2 sm:w-2">
@@ -65,7 +65,7 @@ export default function ContactPage() {
       <motion.div
         initial={{ opacity: 0, y: 40, filter: "blur(10px)" }}
         animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-        transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] as const }}
         className="mb-4 flex flex-col sm:flex-row sm:items-end gap-5 sm:gap-6"
       >
         <h1 className="font-display text-4xl font-medium text-ink sm:text-5xl tracking-tight">
@@ -83,7 +83,7 @@ export default function ContactPage() {
       <motion.p
         initial={{ opacity: 0, y: 20, filter: "blur(4px)" }}
         animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-        transition={{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] as const }}
         className="mb-6 max-w-md text-sm text-muted"
       >
         Open to full-stack web development, backend engineering, and Web3 roles —
@@ -94,7 +94,7 @@ export default function ContactPage() {
       <motion.div
         initial={{ scaleX: 0 }}
         animate={{ scaleX: 1 }}
-        transition={{ duration: 0.7, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.7, delay: 0.35, ease: [0.22, 1, 0.36, 1] as const }}
         className="mb-12 border-b border-border"
         style={{ transformOrigin: "left" }}
       />
