@@ -22,8 +22,8 @@ export interface Contact {
 // Stored oldest → newest; the Projects component reverses for display (newest first)
 export const projects: Project[] = [
   {
-    hash: "linkstore-01",
-    block: 1,
+    hash: "linkstore-03",
+    block: 3,
     date: "Jan 2026",
     status: "SHIPPED",
     title: "LinkStore",
@@ -54,8 +54,8 @@ export const projects: Project[] = [
     stack: ["MPC", "Web3", "Node.js", "Next.js", "EIP-5564", "secp256k1", "Solidity"],
   },
   {
-    hash: "testgen-ai-03",
-    block: 3,
+    hash: "testgen-ai-01",
+    block: 1,
     date: "Jun 2026",
     status: "DEPLOYED",
     title: "TestGen-AI",
