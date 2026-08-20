@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Mail, Phone, Check, MapPin, Briefcase, Globe, Zap, Coffee, Star } from "lucide-react";
@@ -193,9 +194,11 @@ export default function ContactPage() {
           >
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-[150%] skew-x-[-45deg] transition-all duration-700 group-hover:translate-x-[150%]" />
             <div className="mb-6 flex items-start justify-between relative z-10">
-              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-white/5 shadow-inner border border-white/10 transition-all duration-500 group-hover:bg-cyan/10 group-hover:border-cyan/30 group-hover:scale-110 group-hover:rotate-3">
+              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-white/5 shadow-inner border border-white/10 transition-all duration-500 group-hover:bg-cyan/10 group-hover:border-cyan/30 group-hover:scale-110 group-hover:rotate-3 overflow-hidden">
                 {item.sublabel === "Email" && copied ? (
                   <Check size={18} className="text-cyan" />
+                ) : item.sublabel === "Email" ? (
+                  <Image src="https://static.vecteezy.com/system/resources/thumbnails/014/440/980/small/email-message-icon-design-in-blue-circle-png.png" alt="Email Logo" width={44} height={44} className="object-contain w-7 h-7" unoptimized />
                 ) : (
                   <item.icon size={18} className="text-gold transition-colors duration-500 group-hover:text-cyan" />
                 )}
