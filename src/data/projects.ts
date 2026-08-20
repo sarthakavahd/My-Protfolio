@@ -25,7 +25,7 @@ export const projects: Project[] = [
     hash: "linkstore-03",
     block: 3,
     date: "Jan 2026",
-    status: "DEPLOYED",
+    status: "SHIPPED",
     title: "LinkStore",
     link: "https://github.com/sarthakavahd/storing-link",
     summary:
