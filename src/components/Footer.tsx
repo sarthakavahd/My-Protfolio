@@ -33,9 +33,8 @@ export default function Footer() {
           <Link href={contact.linkedin} target="_blank" rel="noopener noreferrer" className="text-muted transition-colors hover:text-gold" aria-label="LinkedIn">
             <LinkedinIcon size={18} />
           </Link>
-          <a href={`mailto:${contact.email}`} className="group flex items-center gap-2 font-mono text-[11px] text-muted transition-colors hover:text-gold">
-            <Mail size={18} className="transition-transform group-hover:scale-110" />
-            <span>{contact.email}</span>
+          <a href={`mailto:${contact.email}`} className="font-mono text-[11px] text-muted transition-colors hover:text-gold">
+            {contact.email}
           </a>
         </div>
       </div>
