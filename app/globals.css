@@ -58,5 +58,10 @@
   50%       { box-shadow: 0 0 30px rgba(79,209,197,0.7), 0 0 60px rgba(79,209,197,0.3); }
 }
 
+@keyframes sweep {
+  0%   { transform: translateX(-150%) skewX(-45deg); }
+  100% { transform: translateX(150%) skewX(-45deg); }
+}
+
 .animate-float    { animation: float-y 4s ease-in-out infinite; }
 .animate-glow     { animation: glow-pulse 2.5s ease-in-out infinite; }

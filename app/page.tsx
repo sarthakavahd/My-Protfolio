@@ -209,34 +209,41 @@ export default function Home() {
         className="mt-8 flex flex-wrap items-center gap-2.5 font-mono text-sm text-muted"
       >
         <motion.div variants={blurRevealVariants} className="flex items-center text-gold">
-          <Rocket size={14} className="mr-2" />
-          <span>currently shipping</span>
+          <Rocket size={14} className="mr-2 animate-bounce" />
+          <span className="uppercase tracking-wider text-[11px] font-semibold">currently shipping</span>
         </motion.div>
         
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={roles[index]}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-            variants={{
-              hidden: { opacity: 0 },
-              visible: { opacity: 1, transition: { staggerChildren: 0.05 } },
-              exit: { opacity: 0, filter: "blur(6px)", transition: { duration: 0.3 } }
-            }}
-            className="flex flex-wrap gap-2.5"
-          >
-            {roles[index].split(" ").map((word, i) => (
-              <motion.span key={i} variants={blurRevealVariants} className="text-ink">
-                {word}
-              </motion.span>
-            ))}
-          </motion.div>
-        </AnimatePresence>
-        
-        <motion.span variants={blurRevealVariants} className="animate-pulse text-cyan">
-          _
-        </motion.span>
+        <div className="relative group flex items-center gap-2 rounded-full border border-cyan/40 bg-cyan/10 px-4 py-1.5 shadow-[0_0_20px_rgba(79,209,197,0.3)] backdrop-blur-md">
+          {/* Animated Sweep Effect */}
+          <div className="absolute inset-0 overflow-hidden rounded-full pointer-events-none">
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-cyan/30 to-transparent -translate-x-[150%] skew-x-[-45deg] animate-[sweep_3s_ease-in-out_infinite]" />
+          </div>
+
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={roles[index]}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              variants={{
+                hidden: { opacity: 0 },
+                visible: { opacity: 1, transition: { staggerChildren: 0.05 } },
+                exit: { opacity: 0, filter: "blur(6px)", transition: { duration: 0.3 } }
+              }}
+              className="flex flex-wrap gap-1.5 relative z-10"
+            >
+              {roles[index].split(" ").map((word, i) => (
+                <motion.span key={i} variants={blurRevealVariants} className="text-white font-semibold drop-shadow-[0_0_8px_rgba(255,255,255,0.7)]">
+                  {word}
+                </motion.span>
+              ))}
+            </motion.div>
+          </AnimatePresence>
+          
+          <motion.span variants={blurRevealVariants} className="animate-pulse text-gold font-bold relative z-10">
+            _
+          </motion.span>
+        </div>
       </motion.div>
 
       {/* Bio — slides up with blur */}
